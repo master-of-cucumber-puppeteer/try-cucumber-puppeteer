@@ -18,13 +18,16 @@ MAINTAINER Eric Bidelman <ebidel@>
 # libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 \
 # libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
 # libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
-# ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+# ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget git
 
 # Install latest chrome dev package.
 # Note: this also installs the necessary libs so we don't need the previous RUN command.
 RUN apt-get update && apt-get install -y wget --no-install-recommends \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
+    && apt-get update \
+    && apt-get install -y git \
+      --no-install-recommends \
     && apt-get update \
     && apt-get install -y google-chrome-unstable \
       --no-install-recommends \
@@ -35,6 +38,8 @@ RUN apt-get update && apt-get install -y wget --no-install-recommends \
 COPY . /app/
 #COPY local.conf /etc/fonts/local.conf
 WORKDIR app
+
+
 
 # Install deps for server.
 RUN yarn
@@ -60,3 +65,9 @@ USER pptruser
 EXPOSE 8080
 
 CMD ["yarn", "start"]
+
+#git clone cucumber-puppeteer
+RUN git clone https://github.com/master-of-cucumber-puppeteer/cucumber-puppeteer.git
+RUN cd cucumber-puppeteer
+RUN npm install
+RUN cd ..
