@@ -6,7 +6,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Try Puppeteer</title>
+  <title>Try Cucumber Puppeteer</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#37474F">
@@ -24,33 +24,36 @@ Unless required by applicable law or agreed to in writing, software distributed 
 <main class="layout horizontal">
   <section class="code-editor-section layout vertical">
     <header>
-      <a href="https://github.com/GoogleChrome/puppeteer" target="_blank" class="layout center-center">
+      <a href="https://github.com/master-of-cucumber-puppeteer/cucumber-puppeteer" target="_blank" class="layout center-center">
         <!-- <img src="https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.png" class="logo" alt="Puppeteer logo" title="Puppeteer logo"> -->
-        <h1 class="title">Try Puppeteer</h1>
+        <h1 class="title">Try Cucumber Puppeteer</h1>
       </a>
-      <h4 class="version"><a href="https://github.com/GoogleChrome/puppeteer/blob/v0.12.0/docs/api.md" target="_blank">v0.12.0</a></h3>
+      <h4 class="version"><a href="https://github.com/master-of-cucumber-puppeteer/cucumber-puppeteer/wiki" target="_blank">v1.0.0</a></h3>
     </header>
     <div class="layout vertical flex">
       <textarea id="code-editor-area">
-const browser = await puppeteer.launch();
+        Feature: Purecloud Login
+        As a product manager
+        I want users to be authenticated before using the product
+        So that only registered users have access
 
-const page = await browser.newPage();
-await page.goto('https://example.com');
-
-console.log(await page.content());
-await page.screenshot({path: 'screenshot.png'});
-
-await browser.close();
+        Scenario: User logs in
+        Given I navigate to "https://apps.mypurecloud.com"
+        When I type "agent@cobrowsedev.inin" into "#email"
+        And I type "CobrowseTest1234!" into "#password"
+        And I click ".btn-login"
+        Then "available" is contained in the class of the element with selector ".entity-mini-card-container"
+        When I click ".full-width-image.entity-person"
+        And I click ".selectable.logout-entry"
+        Then "btn-login" is contained in the class of the element with selector ".btn.btn-primary"
 </textarea>
       <button id="run_button" class="layout center-center">
-        <img src="/images/play.svg"> RUN IT
+        <img src="/images/play.svg"> RUN
       </button>
       <footer>
         <cycler-element>
           <div class="item"><b>Note</b>: There's no need to require('puppeteer') in the editor. It's done for you!</div>
-          <div class="item hiding"><b>Protip</b>: you can use async/await directly in the editor.</div>
-          <div class="item hiding"><b>Note</b>: The playground doesn't support require() calls.</div>
-          <div class="item hiding"><b>Protip</b>: you drag and drop a .js file onto the code editor.</div>
+          <div class="item hiding"><b>Protip</b>: you drag and drop a .feature file onto the code editor.</div>
         </cycler-element>
       </footer>
     </div>
@@ -58,12 +61,12 @@ await browser.close();
   <section class="result-section layout vertical">
     <header>
       <div>
-        <span class="subtitle">Run an example:</span>
+        <span class="subtitle">Run a feature:</span>
         <select id="examples_list" hidden></select>
       </div>
       <div>
         <a href="https://github.com/ebidel/try-puppeteer" target="_blank"
-           title="File a bug on Github">
+           title="Submit a pull request on cucmber puppeteer for your feature file">
           <img src="/images/githublogo.svg" class="github-logo">
         </a>
       </div>
@@ -75,7 +78,7 @@ await browser.close();
             <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
           </svg>
         </div>
-        <h2 class="puppeteer-result-label">Log</h2>
+        <h2 class="puppeteer-result-label">Output from running feature file</h2>
         <output class="puppeteer-result-log"></output>
       </div>
       <div class="puppeteer-results-panel">
