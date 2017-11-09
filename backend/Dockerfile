@@ -67,7 +67,9 @@ EXPOSE 8080
 CMD ["yarn", "start"]
 
 #git clone cucumber-puppeteer
-RUN git clone https://github.com/master-of-cucumber-puppeteer/cucumber-puppeteer.git
-RUN cd cucumber-puppeteer
-RUN npm install
-RUN cd ..
+RUN git clone https://github.com/master-of-cucumber-puppeteer/cucumber-puppeteer.git \
+ && cd cucumber-puppeteer \
+ && npm install \
+ && cd features \
+ && ls *.feature \
+ && pwd

@@ -19,9 +19,11 @@ async function listExamples() {
 
   return new Promise((resolve, reject) => {
     try {
-      const examples = fs.readdirSync('./node_modules/puppeteer/examples/')
-          .filter(filename => !filename.startsWith('.') && filename.endsWith('.js'));
+      console.log('My dir: '+ __dirname);
+      const examples = fs.readdirSync('/app/cucumber-puppeteer/features')
+          .filter(filename => !filename.startsWith('.') && filename.endsWith('.feature'));
       EXAMPLES_CACHE = examples;
+      console.log('Examples: ' + examples)
       return resolve(examples);
     } catch (err) {
       reject(err);
@@ -149,7 +151,7 @@ app.use(function cors(req, res, next) {
   // res.header('Cache-Control', 'private, max-age=300');
   next();
 });
-app.use(express.static('./node_modules/puppeteer/examples/'));
+app.use(express.static('/app/cucumber-puppeteer/features'));
 
 app.get('/', (req, res, next) => {
   res.status(200).send('It works!');
