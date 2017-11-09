@@ -20,7 +20,7 @@ async function listExamples() {
   return new Promise((resolve, reject) => {
     try {
       console.log('My dir: '+ __dirname);
-      const examples = fs.readdirSync('/app/cucumber-puppeteer/features')
+      const examples = fs.readdirSync('/app/purecloud-example/features')
           .filter(filename => !filename.startsWith('.') && filename.endsWith('.feature'));
       EXAMPLES_CACHE = examples;
       console.log('Examples: ' + examples)
@@ -151,7 +151,7 @@ app.use(function cors(req, res, next) {
   // res.header('Cache-Control', 'private, max-age=300');
   next();
 });
-app.use(express.static('/app/cucumber-puppeteer/features'));
+app.use(express.static('/app/purecloud-example/features'));
 
 app.get('/', (req, res, next) => {
   res.status(200).send('It works!');

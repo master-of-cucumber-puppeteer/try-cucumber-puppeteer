@@ -67,8 +67,8 @@ EXPOSE 8080
 CMD ["yarn", "start"]
 
 #git clone cucumber-puppeteer
-RUN git clone https://github.com/master-of-cucumber-puppeteer/cucumber-puppeteer.git \
- && cd cucumber-puppeteer \
+RUN git clone https://github.com/master-of-cucumber-puppeteer/purecloud-example.git \
+ && cd purecloud-example \
  && npm install \
  && cd features \
  && ls *.feature \
