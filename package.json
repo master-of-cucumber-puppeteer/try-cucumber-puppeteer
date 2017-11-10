@@ -1,9 +1,9 @@
 {
-  "name": "try-puppeteer",
+  "name": "try-cucumber-puppeteer",
   "version": "1.0.0",
   "private": true,
   "main": "index.js",
-  "author": "Eric Bidelman <ebidel@gmail.com>",
+  "author": "Casey Nordcliff, Mabry Cervin, Charlie Duong, Jesse Schwartz",
   "license": "Apache-2.0",
   "engines": {
     "node": ">=8"
