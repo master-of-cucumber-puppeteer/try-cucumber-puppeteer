@@ -29,20 +29,27 @@ const resultsPanel = document.querySelector('.puppeteer-results-panel');
 const examplesSelect = document.querySelector('#examples_list');
 
 const editor = CodeMirror.fromTextArea(textarea, {
-  lineNumbers: true,
-  mode: {name: 'javascript', globalVars: true},
-  theme: 'monokai',
-  lineWrapping: true,
-  allowDropFileTypes: ['text/javascript'],
-  autoCloseBrackets: true,
-  matchBrackets: true,
-  extraKeys: {
-    'Ctrl-Space': 'autocomplete',
-    'Tab': 'autocomplete'
-  },
-  keyMap: 'sublime',
-  hintOptions: {hint: puppeteerHint, completeSingle: true}
+  // lineNumbers: true,
+  // mode: {name: 'gherkin', globalVars: true},
+  // theme: 'monokai',
+  // lineWrapping: true,
+  // allowDropFileTypes: ['text/javascript'],
+  // autoCloseBrackets: true,
+  // matchBrackets: true,
+  // extraKeys: {
+  //   'Ctrl-Space': 'autocomplete',
+  //   'Tab': 'autocomplete'
+  // },
+  // keyMap: 'sublime',
+  // hintOptions: {hint: puppeteerHint, completeSingle: true}
+  mode: "gherkin",
+  		lineNumbers: true,
+      gutters: ["CodeMirror-lint-markers", "CodeMirror-foldgutter"],
+      lint: true,
+      foldGutter: true,
+      theme:'monokai'
 });
+
 
 // editor.on('drop', (cm, change) => {
 //   editor.value = '';
@@ -118,7 +125,7 @@ async function runCode() {
     ga('send', 'event', 'code', 'run');
   }
 
-  const resp = await fetch(`${BACKEND_HOST}/run`, {method: 'POST', body: formData});
+  const resp = await fetch(`${BACKEND_HOST}/run-cucumber`, {method: 'POST', body: formData});
   return await resp.json();
 }
 
