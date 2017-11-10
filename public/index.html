@@ -65,7 +65,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
         <select id="examples_list" hidden></select>
       </div>
       <div>
-        <a href="https://github.com/ebidel/try-puppeteer" target="_blank"
+        <a href="https://github.com/master-of-cucumber-puppeteer/purecloud-example/compare/newFeature?expand=1" target="_blank"
            title="Submit a pull request on cucmber puppeteer for your feature file">
           <img src="/images/githublogo.svg" class="github-logo">
         </a>
@@ -89,14 +89,21 @@ Unless required by applicable law or agreed to in writing, software distributed 
   </section>
 </main>
 
-<script src="/codemirror/lib/codemirror.js"></script>
-<script src="/codemirror/mode/javascript/javascript.js"></script>
+<script src="./gherkin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.7.0/codemirror.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.7.0/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.7.0/addon/lint/lint.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.7.0/mode/gherkin/gherkin.js"  charset="UTF-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.7.0/addon/lint/lint.min.js"></script>
+<script src="./gherkin-lint.js"></script>
+<!-- <script src="/codemirror/lib/codemirror.js"></script>
+<script src="/codemirror/mode/gherkin/javascript.js"></script>
 <script src="/codemirror/addon/edit/matchbrackets.js"></script>
 <script src="/codemirror/addon/edit/closebrackets.js"></script>
 <script src="/codemirror/addon/comment/comment.js"></script>
 <script src="/codemirror/addon/hint/show-hint.js"></script>
 <script src="/codemirror/addon/hint/javascript-hint.js"></script>
-<script src="/codemirror/keymap/sublime.js"></script>
+<script src="/codemirror/keymap/sublime.js"></script> -->
 <script src="cycler-element.js"></script>
 <script src="/app.js"></script>
 <script>
