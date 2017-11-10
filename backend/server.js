@@ -162,8 +162,9 @@ app.get('/examples', async (req, res, next) => {
 });
 
 app.post('/run', upload.single('file'), async (req, res, next) => {
-  const code = req.file.buffer.toString();
-
+  console.log('inside the run on server.js');
+  // const code = req.file.buffer.toString();
+  console.log('Code: ' + code);
   // TODO: limit # listeners that can be added. Crashes keep adding more.
   process.on('unhandledRejection', err => {
     console.error(err);
@@ -175,6 +176,7 @@ app.post('/run', upload.single('file'), async (req, res, next) => {
   try {
     const result = await runCodeInSandbox(code); // await runCodeUsingSpawn(code);
     if (!res.headersSent) {
+      console.log('Result: ' + JSON.stringify(result));
       res.status(200).send(result);
     }
   } catch (err) {

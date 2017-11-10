@@ -8,7 +8,7 @@
     "start": "node server.js",
     "build": "./build.sh",
     "restart": "docker kill puppeteer-chrome; yarn build && yarn serve",
-    "serve": "docker run --rm -d -p 8080:8080 --cap-add=SYS_ADMIN --name puppeteer-chrome puppeteer-chrome-linux yarn start"
+    "serve": "docker run --rm -p 8080:8080 --cap-add=SYS_ADMIN --name puppeteer-chrome puppeteer-chrome-linux yarn start"
   },
   "dependencies": {
     "express": "^4.15.4",

@@ -117,15 +117,15 @@ function puppeteerHint(cm) {
 
 async function runCode() {
   let code = editor.getValue();
-
+  console.log('Code in app.js: ', code);
   const formData = new FormData();
-  formData.append('file', new Blob([code], {type: 'text/javascript'}));
-
+  formData.append('file', new Buffer(code), {type: 'text/plain'});
+  console.log('FormData in app.js: ', formData);
   if (ga) {
     ga('send', 'event', 'code', 'run');
   }
-
-  const resp = await fetch(`${BACKEND_HOST}/run-cucumber`, {method: 'POST', body: formData});
+  console.log('FormData:', formData);
+  const resp = await fetch(`${BACKEND_HOST}/run`, {method: 'POST', body: formData});
   return await resp.json();
 }
 
